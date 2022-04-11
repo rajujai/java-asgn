@@ -1,0 +1,33 @@
+Que 1:
+
+create table students(ID int primary key, Name varchar(30)); 
+create table friends(ID int primary key, Friend_ID int, constraint fk_friendID foreign key (Friend_ID) references students(ID)); 
+create table packages(ID int primary key, Salary int); 
+
+select Name from students where ID in (select ID from friends join) 
+
+
+Que 2: 
+
+A relation is in 3NF when it is in 2NF and there is no transitive dependency.
+
+before: person{ id primary key, name, address};
+after: person{ id primary key, name, pincode};
+	 address{ pincode primary, city, state};
+
+Que 3: 
+
+A transaction is a group of lowlevel tasks. 
+It has ACID properties :
+A - Atomicity - Either all operations are executed or all not.
+C - Consistency - The database must remain in a consistent state after any transaction.
+I - Isolation - A transation can't effect another transactions, it is isolated.
+D - Duarbility - History of a transaction must be preserved.
+
+
+Que 4:
+
+create table persons(personId int primary key, lastName varchar(20), firstName varchar(20)); 
+create table address(addressId int primary key, personId int, city varchar(20), state varchar(20)); 
+
+select persons.firstName, persons.lastName, address.city, address.state from persons left join address on persons.personId=address.personId;
