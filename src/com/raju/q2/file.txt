@@ -1,0 +1,51 @@
+Liscov’s Substitution principle ----> This principle defines that object of a superclass shall be replaceable with
+objects of its subclasses without breaking the application.
+
+before LSP ->
+
+public class Human{
+    void eat(Apple apple){
+        System.out.println("Eating "+apple);
+    }
+    void eat(Mango mango){
+            System.out.println("Eating "+mango);
+    }
+}
+class Apple{
+    public String getFruit(){
+        return "Apple";
+    }
+}
+class Mango{
+    public String getFruit(){
+        return "Mango";
+    }
+}
+
+
+here we can't pass any fruit object
+
+after LSP ->
+
+public class Human{
+    void eat(Fruit fruit){
+        System.out.println("Eating "+fruit.getFruit());
+    }
+}
+
+Interface Fruit{
+    String getFruit();
+}
+
+class Apple implements Fruit{
+    @overwrite
+    public String getFruit(){
+        return "Apple";
+    }
+}
+class Mango implements Fruit{
+    @overwrite
+    public String getFruit(){
+        return "Mango";
+    }
+}
