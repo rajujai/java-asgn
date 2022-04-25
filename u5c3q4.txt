@@ -1,0 +1,17 @@
+IOC => IoC container is responsible to instantiate, configure and assemble the objects
+The IoC container get informations from the xml file and inject the dependencies into 
+java bean object.
+
+Spring Beans => Spring bean are the POJO or POJI class of java which is managed by 
+IoC container.
+
+Autowiring => In spring IoC, we can make automate the dependency injection by autowiring
+it is of 3 types for setter
+default : no
+byName 
+byType
+
+and for constructor default is byName if not found then byType
+
+Limitations of autowiring => If we have no of beans with same type then autowire will 
+not work in this case beacuse of duplicates according to byType
