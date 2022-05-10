@@ -1,0 +1,40 @@
+create table faculty(
+FacultyID varchar(5), 
+Name varchar(25), 
+Department varchar(5),
+Gender varchar(1),
+Salary int,
+Working_hours int,
+Vacation_hours int);
+
+insert into faculty values("001","Aakash", "CS", "M", 50000, 45, null);
+insert into faculty values("002","Sahil", "EC", "M", 25000, 50, null);
+insert into faculty values("003","John", "HSS", "M", 100000, 60, null);
+insert into faculty values("004","Shelley", "CS", "F", 75000, 80, null);
+insert into faculty values("005","Anannya", "CS", "F", 45000, 100, null);
+insert into faculty values("006","Sia", "HSS", "F", 60000, 40, null);
+
+
+Q1 -->
+select FacultyID, Name, case 
+when Department = "CS" then "Computer Science"
+when Department = "EC" then "Electronics and Communication"
+when Department = "HSS" then "Humanities and Social Sciences"
+end as Department, Gender, Salary, Working_hours, Vacation_hours from faculty;
+
+
+Q2 -->
+
+update faculty 
+set Vacation_hours 
+= case
+when Working_hours<=50 then null
+when Working_hours<=80 then 20
+when Working_hours<=120 then 40
+else null
+end;
+
+Q3 -->
+
+select FacultyID, Name, Department, Gender, Salary, Working_hours,
+ifnull(Vacation_hours, "not allowed") as Vacation_hours from faculty;
